@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-height: 100vh; /* Limit the container's height to the screen height */
+    overflow-y: auto; /* Add scrollbar when content exceeds the container's height */
+}
+
+h1 {
+    color: #ff6600;
+}
+
+.input-section {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff5500;
+}
+
+.display-section {
+    margin-top: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+#displayText {
+    font-size: 18px;
+}
+
+/* Add this styling for the saved activities list */
+.saved-activities {
+    margin-top: 20px;
+}
+
+.saved-activities h2 {
+    color: #333;
+}
+
+#activitiesList {
+    list-style: none;
+    padding: 0;
+}
+
+#activitiesList li {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#activitiesList li i {
+    color: #ff6600;
+    margin-right: 10px;
+}
+
+#activitiesList li button {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#activitiesList li button:hover {
+    background-color: #ff5500;
+}
+
