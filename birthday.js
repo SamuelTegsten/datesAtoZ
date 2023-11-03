@@ -21,12 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Amusement park",
         "Antique shopping",
         "Axe throwing",
-        "Aquarium visit",
+        "Attend a Christmas market for some holiday cheer.",
         "Alphabet game (find things that start with 'A')",
         "Airplane ride",
         "Attend a concert",
         "Attend a comedy show",
         "Apple picking",
+        "Attend a traditional Swedish folk music performance.",
         "Athletic event (e.g., basketball game)",
         "Attend a dance class",
         "Afternoon tea",
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Conquer an escape room",
         "Canoeing on a river",
         "Cheese and wine tasting",
+        "Cross-country skiing in the beautiful Swedish wilderness.",
         "Couples massage",
         "Charity or volunteer work",
         "Cider tasting",
@@ -102,11 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "Evening stroll in the park",
         "Ethnic food restaurant hopping",
         "Equestrian horseback riding",
+        "Explore historical castles and fortresses.",
         "Eggplant Parmesan cooking",
+        "Enjoy a cozy fika (coffee and cake) at a local café.",
         "Experimental cooking night",
         "Explore local art exhibitions",
         "Educational museum visit",
         "Enjoy an outdoor movie",
+        "Experience the Northern Lights in the Arctic regions.",
         "Elegant wine and cheese",
         "Embark on a road trip",
         "Engage in watercolor painting",
@@ -138,9 +143,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "Go-kart racing",
         "Gardening together",
         "Gallery or art museum visit",
+        "Go on a wildlife safari to spot reindeer or moose.",
+        "Go ice climbing in northern Sweden.",
         "Gourmet cooking at home",
         "Game night with board games",
         "Gazing at the stars",
+        "Go dog sledding in Lapland.",
         "Ghost tour in a historic area",
         "Geocaching adventure",
         "Golfing at a mini-golf course",
@@ -178,9 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "Ice cream parlor visit",
         "Improv comedy show",
         "International cuisine night",
+        "Ice skating on a frozen lake or outdoor rink.",
         "Indoor rock climbing",
+        "Ice fishing on a frozen lake.",
         "Inspirational book club",
         "Insectarium or zoo visit",
+        "Ice sculpting workshop.",
         "Interactive science museum",
         "In-house wine tasting",
         "Italian cooking night",
@@ -274,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Mangrove kayaking",
         "Milkshake tasting",
         "Make homemade pizza",
+        "Northern Lights in the Arctic regions.",
         "Memory lane stroll",
         "Nature hike",
         "Nautical boat tour",
@@ -323,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Professional photography",
         "Paintball adventure",
         "Private wine tasting",
+        "Participate in a winter bonfire event.",
         "Pumpkin patch visit",
         "Pancake breakfast",
         "Puppet show theater",
@@ -397,10 +410,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Sailing on a lake or sea",
         "Theater or play night",
         "Take a cooking class",
+        "Take a winter hike in a national park.",
         "Theme park adventure",
         "Try a new restaurant",
+        "Traditional Swedish sauna and spa day.",
         "Tour a historic site",
         "Tango dancing lessons",
+        "Try ice fishing on a frozen lake.",
         "Take a scenic hike",
         "Tandem bike ride",
         "Tea tasting experience",
@@ -408,6 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Theater in the park",
         "Test your wits at trivia",
         "Take a road trip",
+        "Take a scenic train ride through the countryside.",
         "Try a painting class",
         "Tour a botanical garden",
         "Take a pottery class",
@@ -514,6 +531,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Yakitori grill dinner",
         "Yoga under the stars",
         "Yurt cozy staycation",
+        "Yummy chocolate fondue.",
         "Yummy fruit smoothies",
         "Zoo visit",
         "Zen garden meditation",
@@ -525,9 +543,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "Zodiac sign reading",
         "Zydeco music dancing",
         "Zephyr sailboat ride",
+        "Zero-gravity experience.",
         "Zestful cooking class",
         "Ziplining through the forest",
         "Zen spa relaxation",
+        "Ziplining through the forest.",
         "Zeppelin airship ride",
         "Zookeeper for a day",
         "Zither music night",
@@ -537,30 +557,45 @@ document.addEventListener("DOMContentLoaded", function () {
         "Zigzag hiking adventure",
     ];
     
-    // Function to get or initialize the current character
+
+    const summerActivities = [];
+    const winterActivities = [];
+
+    const summerKeywords = ["beach", "swimming", "sun", "biking", "picnic"];
+    const winterKeywords = ["snow", "skiing", "skating", "holiday", "fireplace", "Christmas", "Ice"];
+
+    // Categorize activities based on keywords
+    birthdayActivities.forEach((activity) => {
+        const lowerActivity = activity.toLowerCase();
+        if (summerKeywords.some((keyword) => lowerActivity.includes(keyword))) {
+            summerActivities.push(activity);
+        } else if (winterKeywords.some((keyword) => lowerActivity.includes(keyword))) {
+            winterActivities.push(activity);
+        }
+    });
+
     function getCurrentCharacter() {
         return localStorage.getItem("currentCharacter") || 'A';
     }
 
-    // Function to update the current character
     function updateCurrentCharacter(character) {
         localStorage.setItem("currentCharacter", character);
     }
 
-    // Function to display a random activity based on the current character
     function displayRandomActivity() {
         const currentCharacter = getCurrentCharacter();
-        const matchingActivities = birthdayActivities.filter(activity => activity.startsWith(currentCharacter));
+        let matchingActivities = birthdayActivities.filter(activity => activity.startsWith(currentCharacter));
+
+        shuffleArray(matchingActivities);
+
         if (matchingActivities.length > 0) {
-            shuffleArray(matchingActivities);
             const selectedActivity = matchingActivities.pop();
             displayText.textContent = selectedActivity;
         } else {
-            displayText.textContent = "No more birthday activities found for this character.";
+            displayText.textContent = "No more activities found for this character.";
         }
     }
 
-    // Function to shuffle an array (Fisher-Yates algorithm)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -568,7 +603,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to save an activity to local storage
     function saveActivity(activity) {
         let savedActivities = JSON.parse(localStorage.getItem("savedActivities")) || [];
         savedActivities.push(activity);
@@ -576,7 +610,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displaySavedActivities();
     }
 
-    // Reset the list of saved activities and character to 'A'
     resetButton.addEventListener("click", function () {
         localStorage.removeItem("savedActivities");
         localStorage.setItem("currentCharacter", 'A');
@@ -584,19 +617,15 @@ document.addEventListener("DOMContentLoaded", function () {
         displayRandomActivity();
     });
 
-    // Event listener for displaying the activity
     displayRandomActivity();
 
-    // Event listener for the submit button
     submitButton.addEventListener("click", function () {
         displayRandomActivity();
         saveActivity(displayText.textContent);
 
-        // Update current character to the next character
         const currentCharacter = getCurrentCharacter();
         const nextCharacter = String.fromCharCode(currentCharacter.charCodeAt(0) + 1);
         if (nextCharacter > 'Z') {
-            // If we reach 'Z', start over at 'A'
             updateCurrentCharacter('A');
         } else {
             updateCurrentCharacter(nextCharacter);
